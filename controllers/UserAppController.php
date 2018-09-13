@@ -8,7 +8,7 @@ use app\models\UserappSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use yii\web\UploadedFile;
 /**
  * UserappController implements the CRUD actions for Userapp model.
  */
@@ -66,9 +66,21 @@ class UserappController extends Controller
     {
         $model = new Userapp();
         $model->authKey = sha1(rand(10,1000));
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            // return $this->goHome();
-            return $this->redirect(['/site/login']);
+
+        $post = Yii::$app->request->post('UserApp'); //Model ClassName
+        if (Yii::$app->request->isPost) {
+            $model->guest_name = $post['guest_name'];
+            $model->id_type = $post['id_type'];
+            $model->id_number = $post['id_number'];
+            $model->phone_number = $post['phone_number'];
+            $model->address = $post['address'];
+            $model->email = $post['email'];
+            $model->username = $post['username'];
+            $model->password = $post['password'];
+            $model->photo = UploadedFile::getInstance($model, 'photo');  
+            if($model->save() && $model->upload()){
+                return $this->redirect(['/site/login']);             
+            }
         }
 
         return $this->render('create', [
@@ -86,10 +98,27 @@ class UserappController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $model->authKey = sha1(rand(10,1000));
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        $post = Yii::$app->request->post('UserApp'); //Model ClassName
+        if (Yii::$app->request->isPost) {
+            $model->guest_name = $post['guest_name'];
+            $model->id_type = $post['id_type'];
+            $model->id_number = $post['id_number'];
+            $model->phone_number = $post['phone_number'];
+            $model->address = $post['address'];
+            $model->email = $post['email'];
+            $model->username = $post['username'];
+            $model->password = $post['password'];
+            $model->photo = UploadedFile::getInstance($model, 'photo');  
+            if($model->save() && $model->upload()){
+                // return $this->redirect(['/site/login']);
+                return $this->redirect(['view', 'id' => $model->id]);             
+            }
         }
+        // if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        //     return $this->redirect(['view', 'id' => $model->id]);
+        // }
 
         return $this->render('update', [
             'model' => $model,

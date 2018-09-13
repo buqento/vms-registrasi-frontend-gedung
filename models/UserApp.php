@@ -33,13 +33,19 @@ class UserApp extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     public function rules()
     {
         return [
-            [['guest_name', 'id_number', 'phone_number', 'username', 'password'], 'required'],
+            [['guest_name', 'id_type', 'id_number', 'email', 'phone_number', 'address', 'username', 'password'], 'required'],
             [['guest_name', 'email'], 'string', 'max' => 50],
             [['id_number', 'username', 'password'], 'string', 'max' => 30],
             [['phone_number'], 'string', 'max' => 12],
-            [['photo'], 'string', 'max' => 32],
             [['authKey'], 'string', 'max' => 64],
-            [['email'], 'email']
+            [['email'], 'email'],
+            [['photo'], 
+                'file', 
+                'skipOnEmpty' => false,
+                'extensions' => 'png, jpg',
+                'maxSize' => 2097152, //500 kilobytes is 500 * 1024 bytes = 512 000 bytes
+                'tooBig' => 'Ukuran maksimal file 2MB'
+            ]
         ];
     }
 
@@ -51,14 +57,26 @@ class UserApp extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         return [
             'id' => 'ID',
             'guest_name' => 'Nama Pengunjung',
+            'id_type' => 'Tipe Identitas',
             'id_number' => 'Nomor Identitas',
             'phone_number' => 'Nomor Telepon',
             'email' => 'Email',
             'photo' => 'Foto',
+            'address' => 'Alamat',
             'username' => 'Nama Pengguna',
             'password' => 'Kata Sandi',
             'authKey' => 'Auth Key',
         ];
+    }
+    
+    public function upload()
+    {
+        if ($this->validate()) {
+            $this->photo->saveAs('user/photo/' . $this->photo->baseName . '.' . $this->photo->extension);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function getAuthKey()

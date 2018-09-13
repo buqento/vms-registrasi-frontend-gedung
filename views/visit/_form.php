@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\datetime\DateTimePicker;
+use kartik\select2\Select2;
 use app\models\DclLongVisit;
 /* @var $this yii\web\View */
 /* @var $model app\models\Visit */
@@ -20,23 +21,31 @@ use app\models\DclLongVisit;
     <?= $form->field($model, 'user_id')->hiddenInput()->label(false) ?>
    
 	<?php echo $form->field($model, 'dt_visit')->widget(DateTimePicker::classname(), [
-    	'options' => ['placeholder' => 'Enter event time ...'],
+    	'options' => ['placeholder' => 'Tentukan waktu kunjungan ...'],
     	'pluginOptions' => [ 'autoclose' => true ]
 		]);
 	?>
 
     <?php 
-    $long_visit = DclLongVisit::find()
-        ->select(['title'])
-        ->indexBy('id')
-        ->column();
-    ?>
-    <?= $form->field($model, 'long_visit')->dropDownList($long_visit) ?>
+        $long_visit = DclLongVisit::find()
+            ->select(['title'])
+            ->indexBy('title')
+            ->column();
 
-    <?= $form->field($model, 'additional_info')->textarea(['rows' => 6]) ?>
+        echo $form->field($model, 'long_visit')->widget(Select2::classname(), [
+            'data' => $long_visit,
+            'language' => 'en',
+            'options' => ['placeholder' => 'pilih lama kunjungan ...'],
+            'pluginOptions' => [
+                'allowClear' => true
+            ],
+        ]);
+    ?>
+
+    <?= $form->field($model, 'additional_info')->textarea(['rows' => 3]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Kirim', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

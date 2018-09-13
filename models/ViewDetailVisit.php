@@ -5,24 +5,23 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "visit".
+ * This is the model class for table "view_detail_visit".
  *
- * @property int $id
+ * @property string $guest_name
  * @property string $code
- * @property int $user_id
- * @property int $destination_id
+ * @property string $company_name
  * @property string $dt_visit
  * @property string $long_visit
  * @property string $additional_info
  */
-class Visit extends \yii\db\ActiveRecord
+class ViewDetailVisit extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'visit';
+        return 'view_detail_visit';
     }
 
     /**
@@ -31,12 +30,11 @@ class Visit extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['code', 'user_id', 'destination_id', 'dt_visit', 'long_visit', 'additional_info'], 'required'],
-            [['user_id', 'destination_id'], 'integer'],
+            [['code', 'company_name', 'dt_visit', 'long_visit', 'additional_info'], 'required'],
             [['dt_visit'], 'safe'],
             [['additional_info'], 'string'],
-            [['code', 'long_visit'], 'string', 'max' => 50],
-
+            [['guest_name', 'code', 'long_visit'], 'string', 'max' => 50],
+            [['company_name'], 'string', 'max' => 100],
         ];
     }
 
@@ -46,10 +44,9 @@ class Visit extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'user_id' => 'Id Pengunjung',
+            'guest_name' => 'Nama Pengunjung',
             'code' => 'Kode Kunjungan',
-            'destination_id' => 'Tujuan',
+            'company_name' => 'Tujuan',
             'dt_visit' => 'Tanggal/Jam Kunjungan',
             'long_visit' => 'Lama Kunjungan',
             'additional_info' => 'Informasi Kunjungan',

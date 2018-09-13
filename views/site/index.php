@@ -16,7 +16,7 @@ use app\models\DclDestination;
                 foreach($rows as $row)
                 {
                     ?>
-                    <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="col-lg-3 col-md-4 col-sm-6">
 
                         <div class="card">
                           <img class="card-img-top img-fluid" src="../../../backend/web/uploads/<?php echo $row['picture']; ?>" alt="<?php echo $row['company_name']; ?>">
