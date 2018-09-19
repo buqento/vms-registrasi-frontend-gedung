@@ -13,6 +13,20 @@ $config = [
         '@npm'   => '@vendor/npm-asset',
     ],
     'components' => [
+        
+        // 'urlManager' => [
+        //     'class' => 'yii\web\UrlManager',
+        //     'enablePrettyUrl' => true,
+        //     'showScriptName' => false,
+        //     'rules' => [
+        //         ''=>'site/index',
+        //         '<action:(index|login|logout)>'=>'site/<action>',
+        //         '<controller:\w+>/<id:\d+>' => '<controller>/view',
+        //         '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
+        //         '<controller:\w+>/<action:\w+>' => '<controller>/<action>'
+        //     ],
+        // ],
+
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'n50lui8OGBQF0u4ibJrL6BL_HBsW__6Q',

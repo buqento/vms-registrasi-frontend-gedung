@@ -23,18 +23,12 @@ use app\models\DclDestination;
                           <div class="card-body">
                             <h3 class="card-title"><?php echo $row['company_name']; ?></h3>
                             <p class="card-text"><?php echo $row['address']; ?></p>
-                            <?php
-                            if(Yii::$app->user->isGuest){
-                                $controller = 'visitunregister';
-                            }else{
-                                $controller = 'visit';
-                            }
-                            ?>
-                            <a href="<?php echo '?r='.$controller.'/create&id='.$row['id']; ?>" class="btn btn-primary">Kunjungi &raquo;</a>
+                            <a href="<?php echo '?r=visited/create&id='.$row['id']; ?>" class="btn btn-primary">Kunjungi &raquo;</a>
                           </div>
                         </div>
-
+<br>
                     </div>
+                    
 
             <?php } ?>
             <div>

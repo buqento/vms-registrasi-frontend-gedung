@@ -25,10 +25,6 @@ use app\models\DclType;
         echo $form->field($model, 'id_type')->widget(Select2::classname(), [
             'data' => $id_type,
             'language' => 'en',
-            'options' => ['placeholder' => 'pilih tipe identitas ...'],
-            'pluginOptions' => [
-                'allowClear' => true
-            ],
         ]);
     ?>
 
