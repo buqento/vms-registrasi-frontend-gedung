@@ -11,6 +11,7 @@ use Yii;
  * @property string $guest_name
  * @property string $id_type
  * @property string $id_number
+ * @property string $gender
  * @property string $phone_number
  * @property string $email
  * @property string $photo
@@ -38,7 +39,7 @@ class Visited extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['guest_name', 'id_type', 'id_number', 'phone_number', 'email', 'photo', 'address', 'visit_code', 'destination', 'dt_visit', 'long_visit', 'additional_info'], 'required'],
+            [['guest_name', 'id_type', 'id_number', 'gender', 'phone_number', 'email', 'photo', 'address', 'visit_code', 'destination', 'dt_visit', 'long_visit', 'additional_info'], 'required'],
             [['dt_visit'], 'safe'],
             ['email', 'email'],
             [['additional_info'], 'string'],
@@ -60,6 +61,7 @@ class Visited extends \yii\db\ActiveRecord
             'guest_name' => 'Nama Pengunjung',
             'id_type' => 'Tipe Identitas',
             'id_number' => 'Nomor Identitas',
+            'gender' => 'Jenis Kelamin',
             'phone_number' => 'Nomor Telepon',
             'email' => 'Email',
             'photo' => 'Foto',

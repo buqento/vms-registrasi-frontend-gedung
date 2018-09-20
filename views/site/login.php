@@ -6,11 +6,17 @@ use yii\bootstrap\ActiveForm;
 $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="container">
+<div class="container-fluid">
 
     <div class="row">
 
-        <div class="col-lg-4">
+        <div class="col">
+
+        <h3 class="text-right">
+          <?= Html::encode($this->title) ?> 
+          <span class="glyphicon glyphicon glyphicon-menu-right"></span>
+          <small class="text-muted">Pengguna</small>
+        </h3>
             <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
 
             <div class="form-group">

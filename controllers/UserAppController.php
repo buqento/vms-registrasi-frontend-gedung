@@ -72,6 +72,7 @@ class UserappController extends Controller
             $model->guest_name = $post['guest_name'];
             $model->id_type = $post['id_type'];
             $model->id_number = $post['id_number'];
+            $model->gender = $post['gender'];
             $model->phone_number = $post['phone_number'];
             $model->address = $post['address'];
             $model->email = $post['email'];

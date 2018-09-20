@@ -4,19 +4,19 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\VisitedSearch */
+/* @var $searchModel app\models\DcldestinationSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Kunjungan';
+$this->title = 'Dcl Destinations';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="visited-index">
+<div class="dcl-destination-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Visited', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Dcl Destination', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -26,20 +26,16 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'guest_name',
-            'id_type',
-            'id_number',
-            // 'gender',
-            'phone_number',
+            'company_name',
+            'open_hour',
+            'close_hour',
+            'build_name',
+            //'floor',
+            //'phone',
             //'email:email',
-            //'photo',
-            //'address',
-            //'code',
-            //'destination_id',
-            //'dt_visit',
-            //'long_visit',
-            //'additional_info:ntext',
-            //'created',
+            //'profile:ntext',
+            //'picture',
+            //'address:ntext',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

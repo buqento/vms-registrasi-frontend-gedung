@@ -13,7 +13,16 @@ $config = [
         '@npm'   => '@vendor/npm-asset',
     ],
     'components' => [
+
         
+        // 'urlManager' => [
+        //     'enablePrettyUrl' => true,
+        //     'showScriptName' => false,
+        //     'rules' => [
+        //     ],
+        // ],
+        
+                
         // 'urlManager' => [
         //     'class' => 'yii\web\UrlManager',
         //     'enablePrettyUrl' => true,
@@ -63,14 +72,7 @@ $config = [
                 'defaultRoles' => ['guest'],
         ],
         'db' => $db,
-        /*
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => [
-            ],
-        ],
-        */
+
     ],
     'params' => $params,
 ];

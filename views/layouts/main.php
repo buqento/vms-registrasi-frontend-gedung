@@ -43,9 +43,9 @@ AppAsset::register($this);
                 [
                     'items' => [
                         ['label' => 'Login', 'url' => ['/site/login']],
-                        ['label' => 'Register', 'url' => ['/userapp/create']],
+                        ['label' => 'Pendaftaran', 'url' => ['/userapp/create']],
                     ],
-                    'label' => 'User',
+                    'label' => 'Pengguna',
                 ]
             ) : (
                 '<li>'

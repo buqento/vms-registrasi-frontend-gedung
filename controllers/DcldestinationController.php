@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Destination;
-use app\models\DestinationSearch;
+use app\models\DclDestination;
+use app\models\DcldestinationSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * DestinationController implements the CRUD actions for Destination model.
+ * DcldestinationController implements the CRUD actions for DclDestination model.
  */
-class DestinationController extends Controller
+class DcldestinationController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -30,12 +30,12 @@ class DestinationController extends Controller
     }
 
     /**
-     * Lists all Destination models.
+     * Lists all DclDestination models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new DestinationSearch();
+        $searchModel = new DcldestinationSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class DestinationController extends Controller
     }
 
     /**
-     * Displays a single Destination model.
+     * Displays a single DclDestination model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,13 +58,13 @@ class DestinationController extends Controller
     }
 
     /**
-     * Creates a new Destination model.
+     * Creates a new DclDestination model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Destination();
+        $model = new DclDestination();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -76,7 +76,7 @@ class DestinationController extends Controller
     }
 
     /**
-     * Updates an existing Destination model.
+     * Updates an existing DclDestination model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -96,7 +96,7 @@ class DestinationController extends Controller
     }
 
     /**
-     * Deletes an existing Destination model.
+     * Deletes an existing DclDestination model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -110,15 +110,15 @@ class DestinationController extends Controller
     }
 
     /**
-     * Finds the Destination model based on its primary key value.
+     * Finds the DclDestination model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Destination the loaded model
+     * @return DclDestination the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Destination::findOne($id)) !== null) {
+        if (($model = DclDestination::findOne($id)) !== null) {
             return $model;
         }
 

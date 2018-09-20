@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Visited;
+use app\models\DclDestination;
 
 /**
- * VisitedSearch represents the model behind the search form of `app\models\Visited`.
+ * DcldestinationSearch represents the model behind the search form of `app\models\DclDestination`.
  */
-class VisitedSearch extends Visited
+class DcldestinationSearch extends DclDestination
 {
     /**
      * {@inheritdoc}
@@ -18,8 +18,8 @@ class VisitedSearch extends Visited
     public function rules()
     {
         return [
-            [['id', 'destination_id'], 'integer'],
-            [['guest_name', 'id_type', 'id_number', 'gender', 'phone_number', 'email', 'photo', 'address', 'visit_code', 'dt_visit', 'long_visit', 'additional_info', 'created'], 'safe'],
+            [['id', 'floor', 'phone'], 'integer'],
+            [['company_name', 'open_hour', 'close_hour', 'build_name', 'email', 'profile', 'picture', 'address'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class VisitedSearch extends Visited
      */
     public function search($params)
     {
-        $query = Visited::find();
+        $query = DclDestination::find();
 
         // add conditions that should always apply here
 
@@ -60,21 +60,18 @@ class VisitedSearch extends Visited
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'destination_id' => $this->destination_id,
-            'dt_visit' => $this->dt_visit,
-            'created' => $this->created,
+            'open_hour' => $this->open_hour,
+            'close_hour' => $this->close_hour,
+            'floor' => $this->floor,
+            'phone' => $this->phone,
         ]);
 
-        $query->andFilterWhere(['like', 'guest_name', $this->guest_name])
-            ->andFilterWhere(['like', 'id_type', $this->id_type])
-            ->andFilterWhere(['like', 'id_number', $this->id_number])
-            ->andFilterWhere(['like', 'phone_number', $this->phone_number])
+        $query->andFilterWhere(['like', 'company_name', $this->company_name])
+            ->andFilterWhere(['like', 'build_name', $this->build_name])
             ->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'photo', $this->photo])
-            ->andFilterWhere(['like', 'address', $this->address])
-            ->andFilterWhere(['like', 'visit_code', $this->visit_code])
-            ->andFilterWhere(['like', 'long_visit', $this->long_visit])
-            ->andFilterWhere(['like', 'additional_info', $this->additional_info]);
+            ->andFilterWhere(['like', 'profile', $this->profile])
+            ->andFilterWhere(['like', 'picture', $this->picture])
+            ->andFilterWhere(['like', 'address', $this->address]);
 
         return $dataProvider;
     }

@@ -31,6 +31,15 @@ use app\models\DclType;
 
     <?= $form->field($model, 'id_number')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'gender')->widget(Select2::classname(), [
+            'data' => [
+                'L' => 'Laki-laki',
+                'P' => 'Perempuan'
+            ],
+            'language' => 'en'
+        ]);
+    ?>
+
     <?= $form->field($model, 'phone_number')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>

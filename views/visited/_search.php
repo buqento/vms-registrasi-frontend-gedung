@@ -21,6 +21,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id_type') ?>
 
+    <?= $form->field($model, 'gender') ?>
+
     <?= $form->field($model, 'id_number') ?>
 
     <?= $form->field($model, 'phone_number') ?>

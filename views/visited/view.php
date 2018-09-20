@@ -11,8 +11,6 @@ $qrCode = (new QrCode($model->visit_code))
 
 $qrCode->writeFile('../../yiibase/qrcode/'. $model->visit_code .'.png');
 
-// echo $_GET['textimg'];
-
 $this->title = $model->visit_code;
 $this->params['breadcrumbs'][] = $this->title;
 
@@ -50,6 +48,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'guest_name',
                 'id_type',
                 'id_number',
+                'gender',
                 'phone_number',
                 'email:email',
                 // 'photo',

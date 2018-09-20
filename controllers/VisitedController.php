@@ -42,7 +42,7 @@ class VisitedController extends Controller
     {
         $searchModel = new VisitedSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
+        
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -73,25 +73,27 @@ class VisitedController extends Controller
         $model->visit_code = $this->createRandom(6);
         $model->destination = $this->getTenant($id);
 
-        $model->guest_name = "Mr. browser";
-        $model->id_type = "Paspor";
-        $model->id_number = "8171012010840011";
-        $model->phone_number = "085656117888";
-        $model->email = "kingR@gmail.com";
-        $model->address = "Jalan jalan aja bang";
-        $model->photo = "Belum ada foto, hahaha";
-        $model->dt_visit = "2018-09-05 11:25";
-        $model->long_visit = "Full Day";
-        $model->additional_info = "Informasi tambahan kaga ada bang!"; 
+        // $model->guest_name = "Mr. browser";
+        // $model->id_type = "Paspor";
+        // $model->id_number = "8171012010840011";
+        // $model->gender = 'L';
+        // $model->phone_number = "085656117888";
+        // $model->email = "kingR@gmail.com";
+        // $model->address = "Jalan jalan aja bang";
+        // $model->photo = "Belum ada foto, hahaha";
+        // $model->dt_visit = "2018-09-05 11:25";
+        // $model->long_visit = "Full Day";
+        // $model->additional_info = "Informasi tambahan kaga ada bang!"; 
 
         $post = Yii::$app->request->post('Visited'); //Model ClassName
         if(Yii::$app->user->isGuest){
-            // $model->guest_name = $post['guest_name'];
-            // $model->id_type = $post['id_type'];
-            // $model->id_number = $post['id_number'];
-            // $model->phone_number = $post['phone_number'];
-            // $model->email = $post['email'];            
-            // $model->address = $post['address'];    
+            $model->guest_name = $post['guest_name'];
+            $model->id_type = $post['id_type'];
+            $model->id_number = $post['id_number'];
+            $model->gender = $post['gender'];
+            $model->phone_number = $post['phone_number'];
+            $model->email = $post['email'];            
+            $model->address = $post['address'];    
             $model->photo = UploadedFile::getInstance($model, 'photo');
         }else{
             $user_identity = UserApp::find()
@@ -100,6 +102,7 @@ class VisitedController extends Controller
             $model->guest_name = $user_identity->username;
             $model->id_type = $user_identity->id_type;
             $model->id_number = $user_identity->id_number;
+            $model->gender = $user_identity->gender;
             $model->phone_number = $user_identity->phone_number;
             $model->email = $user_identity->email;
             $model->address = $user_identity->address;
@@ -108,9 +111,9 @@ class VisitedController extends Controller
 
         if (Yii::$app->request->isPost) {
 
-            // $model->dt_visit = $post['dt_visit'];
-            // $model->long_visit = $post['long_visit'];
-            // $model->additional_info = $post['textimg']; 
+            $model->dt_visit = $post['dt_visit'];
+            $model->long_visit = $post['long_visit'];
+            $model->additional_info = $post['additional_info']; 
 
             if(Yii::$app->user->isGuest){$model->upload();}
             $model->save();    
