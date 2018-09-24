@@ -18,7 +18,7 @@ class VisitedSearch extends Visited
     public function rules()
     {
         return [
-            [['id', 'destination_id'], 'integer'],
+            [['id', 'destination'], 'integer'],
             [['guest_name', 'id_type', 'id_number', 'gender', 'phone_number', 'email', 'photo', 'address', 'visit_code', 'dt_visit', 'long_visit', 'additional_info', 'created'], 'safe'],
         ];
     }
@@ -60,12 +60,12 @@ class VisitedSearch extends Visited
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'destination_id' => $this->destination_id,
+            'destination' => $this->destination,
             'dt_visit' => $this->dt_visit,
             'created' => $this->created,
         ]);
 
-        $query->andFilterWhere(['like', 'guest_name', $this->guest_name])
+        $query->andFilterWhere(['like', 'guest_name', Yii::$app->user->identity->username])
             ->andFilterWhere(['like', 'id_type', $this->id_type])
             ->andFilterWhere(['like', 'id_number', $this->id_number])
             ->andFilterWhere(['like', 'phone_number', $this->phone_number])

@@ -68,7 +68,7 @@ class Visited extends \yii\db\ActiveRecord
             'address' => 'Alamat',
             'visit_code' => 'Kode Kunjungan',
             'destination' => 'Tujuan',
-            'dt_visit' => 'Tanggal Kunjungan',
+            'dt_visit' => 'Tanggal & Jam Kunjungan',
             'long_visit' => 'Lama Kunjungan',
             'additional_info' => 'Informasi Kunjungan',
             'created' => 'Created',

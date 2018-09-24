@@ -39,6 +39,12 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Dashboard', 'url' => ['/site/index']],
+            [
+                'label' => 'Daftar Kunjungan', 
+                'url' => ['/visited/index'],
+                'visible' => !Yii::$app->user->isGuest
+            ],
+
             Yii::$app->user->isGuest ? (
                 [
                     'items' => [
@@ -46,6 +52,7 @@ AppAsset::register($this);
                         ['label' => 'Pendaftaran', 'url' => ['/userapp/create']],
                     ],
                     'label' => 'Pengguna',
+                    'visible' => Yii::$app->user->isGuest
                 ]
             ) : (
                 '<li>'

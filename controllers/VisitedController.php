@@ -34,10 +34,6 @@ class VisitedController extends Controller
         ];
     }
 
-    /**
-     * Lists all Visited models.
-     * @return mixed
-     */
     public function actionIndex()
     {
         $searchModel = new VisitedSearch();
@@ -49,12 +45,6 @@ class VisitedController extends Controller
         ]);
     }
 
-    /**
-     * Displays a single Visited model.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     public function actionView($id)
     {
         return $this->render('view', [
@@ -62,28 +52,11 @@ class VisitedController extends Controller
         ]);
     }
 
-    /**
-     * Creates a new Visited model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
     public function actionCreate($id)
     {
         $model = new Visited();
         $model->visit_code = $this->createRandom(6);
         $model->destination = $this->getTenant($id);
-
-        // $model->guest_name = "Mr. browser";
-        // $model->id_type = "Paspor";
-        // $model->id_number = "8171012010840011";
-        // $model->gender = 'L';
-        // $model->phone_number = "085656117888";
-        // $model->email = "kingR@gmail.com";
-        // $model->address = "Jalan jalan aja bang";
-        // $model->photo = "Belum ada foto, hahaha";
-        // $model->dt_visit = "2018-09-05 11:25";
-        // $model->long_visit = "Full Day";
-        // $model->additional_info = "Informasi tambahan kaga ada bang!"; 
 
         $post = Yii::$app->request->post('Visited'); //Model ClassName
         if(Yii::$app->user->isGuest){
@@ -127,13 +100,6 @@ class VisitedController extends Controller
         ]);
     }
 
-    /**
-     * Updates an existing Visited model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
@@ -147,13 +113,6 @@ class VisitedController extends Controller
         ]);
     }
 
-    /**
-     * Deletes an existing Visited model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
@@ -161,13 +120,6 @@ class VisitedController extends Controller
         return $this->redirect(['index']);
     }
 
-    /**
-     * Finds the Visited model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Visited the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     protected function findModel($id)
     {
         if (($model = Visited::findOne($id)) !== null) {
