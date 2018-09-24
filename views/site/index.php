@@ -17,6 +17,7 @@ use yii\grid\GridView;
             'dataProvider' => $dataProvider,
             // 'filterModel' => $searchModel,
             'itemView' => '_tenant',
+            'summary' => false
         ]);
 
 		// echo GridView::widget([
