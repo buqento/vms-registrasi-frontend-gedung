@@ -1,19 +1,13 @@
 <?php
-
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use Da\QrCode\QrCode;
-
 $qrCode = (new QrCode($model->visit_code))
     ->setSize(600)
     ->setMargin(5)
     ->useForegroundColor(0, 0, 0);
-
-$qrCode->writeFile('../../yiibase/qrcode/'. $model->visit_code .'.png');
-
 $this->title = $model->visit_code;
 $this->params['breadcrumbs'][] = $this->title;
-
 ?>
 
 <div class="row">
@@ -28,7 +22,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     'visit_code' => $model->visit_code,
                     'guest_name' => $model->guest_name,
                     'destination' => $model->destination
-
                 ], 
                 [
                     'class'=>'btn btn-success', 

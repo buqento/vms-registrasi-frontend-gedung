@@ -7,6 +7,7 @@ use kartik\select2\Select2;
 use kartik\file\FileInput;
 use app\models\DclLongVisit;
 use app\models\DclType;
+use timurmelnikov\widgets\WebcamShoot;
 ?>
 
 <div class="visited-form">
@@ -54,10 +55,14 @@ use app\models\DclType;
 
     <?php
     if(Yii::$app->user->isGuest){
-        echo $form->field($model, 'photo')->widget(FileInput::classname(), [
-            'options' => ['accept' => 'image/*',  'capture'=> 'user'],
+        // echo $form->field($model, 'photo')->widget(FileInput::classname(), [
+        //     'options' => ['accept' => 'image/*',  'capture'=> 'user'],
+        // ]);
+        echo WebcamShoot::widget([
+            'targetInputID' => 'photo',
+            'targetImgID' => 'textphoto',
         ]);
-
+        echo $form->field($model, 'photo')->hiddenInput(['id' => 'photo'])->label(false);
     }else{
         echo $form->field($model, 'photo')->hiddenInput()->label(false);
     }
@@ -83,9 +88,6 @@ use app\models\DclType;
 
     <?= $form->field($model, 'additional_info')->textarea(['rows' => 3]) ?>
 
-
-
-    
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>

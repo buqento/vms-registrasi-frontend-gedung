@@ -67,7 +67,7 @@ class VisitedController extends Controller
             $model->phone_number = $post['phone_number'];
             $model->email = $post['email'];            
             $model->address = $post['address'];    
-            $model->photo = UploadedFile::getInstance($model, 'photo');
+            $model->photo = $post['photo'];    
         }else{
             $user_identity = UserApp::find()
                     ->where(['id' => Yii::$app->user->identity->id])
@@ -88,7 +88,6 @@ class VisitedController extends Controller
             $model->long_visit = $post['long_visit'];
             $model->additional_info = $post['additional_info']; 
 
-            if(Yii::$app->user->isGuest){$model->upload();}
             $model->save();    
             return $this->redirect(['view', 
                 'id' => $model->id
@@ -146,7 +145,7 @@ class VisitedController extends Controller
         return $destination->company_name;
     }
 
-    public function actionExport() {
+    public function actionExport($visit_code) {
         // get your HTML raw content without any layouts or scripts
         $content = $this->renderPartial('exportpdf');
         
@@ -163,7 +162,7 @@ class VisitedController extends Controller
             // your html content input
             'content' => $content,  
 
-            'filename' => 'visit_' . time() . '.pdf',
+            'filename' => 'vms_'.$visit_code.'-' . time() . '.pdf',
             // format content from your own css file if needed or use the
             // enhanced bootstrap css built by Krajee for mPDF formatting 
             'cssFile' => '@vendor/kartik-v/yii2-mpdf/assets/kv-mpdf-bootstrap.min.css',

@@ -1,10 +1,17 @@
+<?php
+use Da\QrCode\QrCode;
+$qrCode = (new QrCode($_GET['visit_code']))
+    ->setSize(500)
+    ->setMargin(5)
+    ->useForegroundColor(0, 0, 0);
+?>
 <div class="container">
 	<div class="row text-center text-sm">
 		<h3>Selamat datang di <strong><?php echo $_GET['destination']; ?></strong></h3>
 		<h1><strong><?php echo strtoupper($_GET['guest_name']); ?></strong></h1>
 		<hr>
 		<p>Kode kunjungan anda</p>
-		<img width="600" src="<?php echo '../../yiibase/qrcode/'.$_GET['visit_code'].'.png';?>">
+		<img src="<?php echo $qrCode->writeDataUri(); ?>" alt="..." class="img-thumbnail">
 		<h1><?php echo $_GET['visit_code']; ?></h1>
 		<hr>
 	</div>

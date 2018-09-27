@@ -70,10 +70,6 @@ class SiteController extends Controller
 
         $dataProvider_ = new ActiveDataProvider([
             'query' => DclDestination::find(),
-            'pagination' => [
-                'pageSize' => 3,
-            ],
-
         ]);
 
         return $this->render('index', [

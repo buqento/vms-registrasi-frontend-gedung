@@ -35,17 +35,10 @@ class UserApp extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         return [
             [['guest_name', 'id_type', 'id_number', 'email', 'phone_number', 'address', 'username', 'password'], 'required'],
             [['guest_name', 'email'], 'string', 'max' => 50],
-            [['id_number', 'username', 'password'], 'string', 'max' => 30],
+            [['id_number', 'username'], 'string', 'max' => 30],
             [['phone_number'], 'string', 'max' => 12],
             [['authKey'], 'string', 'max' => 64],
             [['email'], 'email'],
-            [['photo'], 
-                'file', 
-                'skipOnEmpty' => false,
-                'extensions' => 'png, jpg',
-                'maxSize' => 2097152, //500 kilobytes is 500 * 1024 bytes = 512 000 bytes
-                'tooBig' => 'Ukuran maksimal file 2MB'
-            ]
         ];
     }
 
@@ -67,16 +60,6 @@ class UserApp extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
             'password' => 'Kata Sandi',
             'authKey' => 'Auth Key',
         ];
-    }
-    
-    public function upload()
-    {
-        if ($this->validate()) {
-            $this->photo->saveAs('user/photo/' . $this->photo->baseName . '.' . $this->photo->extension);
-            return true;
-        } else {
-            return false;
-        }
     }
 
     public function getAuthKey()
@@ -111,6 +94,16 @@ class UserApp extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 
     public function validatePassword($password)
     {
-        return $this->password === $password;
+        return Yii::$app->security->validatePassword($password, $this->password);
+    }
+
+    public function setPassword($password)
+    {
+        return Yii::$app->security->generatePasswordHash($password);
+    }
+
+    public function generateAuthKey()
+    {
+        return Yii::$app->security->generateRandomString();
     }
 }

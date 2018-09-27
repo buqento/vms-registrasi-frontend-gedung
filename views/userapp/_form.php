@@ -5,15 +5,17 @@ use yii\widgets\ActiveForm;
 use kartik\file\FileInput;
 use kartik\select2\Select2;
 use app\models\DclType;
-/* @var $this yii\web\View */
-/* @var $model app\models\Userapp */
-/* @var $form yii\widgets\ActiveForm */
+use timurmelnikov\widgets\WebcamShoot;
 ?>
 
 <div class="userapp-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
+<div class="col-md-6">
+
+    <h4>Data Profil</h4>
+    <hr>
     <?= $form->field($model, 'guest_name')->textInput(['maxlength' => true]) ?>
 
     <?php 
@@ -43,13 +45,18 @@ use app\models\DclType;
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'photo')->widget(FileInput::classname(), [
-        'options' => ['accept' => 'image/*'],
-    ]); ?>
-
     <?= $form->field($model, 'address')->textarea(['rows' => 3]) ?>
-    
-    <br>
+
+    <?= WebcamShoot::widget([
+            'targetInputID' => 'photo',
+            'targetImgID' => 'textphoto',
+        ])
+    ?>
+
+    <?= $form->field($model, 'photo')->hiddenInput(['id' => 'photo'])->label(false) ?>
+
+</div>
+<div class="col-md-6">
     <h4>Data Login</h4>
     <hr>
     <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
@@ -61,6 +68,7 @@ use app\models\DclType;
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
+</div>
 
     <?php ActiveForm::end(); ?>
 

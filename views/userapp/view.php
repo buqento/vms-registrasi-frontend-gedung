@@ -3,38 +3,34 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\Userapp */
-
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Userapps', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="userapp-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
+    <h1>#<?= $this->title ?></h1>
+    <div class="col-md-3">
+        <img class="img-thumbnail" src="<?= $model->photo ?>">
+    </div>
+    <div class="col-md-9">
+        <?= DetailView::widget([
+            'model' => $model,
+            'attributes' => [
+                // 'id',
+                'guest_name',
+                'id_type',
+                'id_number',
+                'phone_number',
+                'email:email',
+                // 'photo',
+                'address',
+                'username',
+                [
+                    'attribute'=>'password',
+                    'value'=>'*******'
+                ],
+                // 'authKey',
             ],
         ]) ?>
-    </p>
-
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            'first_name',
-            'last_name',
-            'username',
-            'password',
-            'authKey',
-        ],
-    ]) ?>
-
+    </div>
 </div>

@@ -47,6 +47,14 @@ class DcldestinationSearch extends DclDestination
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => [
+                'defaultOrder' => [
+                    'company_name' => SORT_ASC,
+                ]
+            ],
+            'pagination' => [
+                'pageSize' => 5,
+            ],
         ]);
 
         $this->load($params);

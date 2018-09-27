@@ -75,16 +75,6 @@ class Visited extends \yii\db\ActiveRecord
         ];
     }
 
-    public function upload()
-    {
-        if ($this->validate()) {
-            $this->photo->saveAs('user/photo/' . $this->photo->baseName . '.' . $this->photo->extension);
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     public function getDestination($id)
     {
         $rows = Yii::$app->db->createCommand('SELECT company_name FROM dcl_destination WHERE id=$id')->queryAll();

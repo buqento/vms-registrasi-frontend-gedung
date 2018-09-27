@@ -39,30 +39,34 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Dashboard', 'url' => ['/site/index']],
-            [
-                'label' => 'Daftar Kunjungan', 
-                'url' => ['/visited/index'],
-                'visible' => !Yii::$app->user->isGuest
-            ],
 
             Yii::$app->user->isGuest ? (
                 [
                     'items' => [
                         ['label' => 'Login', 'url' => ['/site/login']],
-                        ['label' => 'Pendaftaran', 'url' => ['/userapp/create']],
+                        [
+                            'label' => 'Pendaftaran', 
+                            'url' => ['/userapp/create'],
+                        ],
                     ],
                     'label' => 'Pengguna',
                     'visible' => Yii::$app->user->isGuest
                 ]
             ) : (
-                '<li>'
+ 
+                '<li>'.Html::a('Kunjungan', ['/visited'], ['class' => 'profile-link']).'</li>'
+                . '</li>'
+                . '<li>'.Html::a('Ubah Akun', ['/userapp/update', 'id' => Yii::$app->user->identity->id], ['class' => 'profile-link']).'</li>'
+
+                . '<li>'
                 . Html::beginForm(['/site/logout'], 'post')
                 . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
+                    'Logout ('. Yii::$app->user->identity->username .')',
                     ['class' => 'btn btn-link logout']
                 )
                 . Html::endForm()
                 . '</li>'
+
             )
         ],
     ]);

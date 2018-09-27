@@ -39,7 +39,7 @@ class DclDestination extends \yii\db\ActiveRecord
             [['open_hour', 'close_hour'], 'safe'],
             [['floor', 'phone'], 'integer'],
             [['profile', 'address'], 'string'],
-            [['company_name', 'build_name', 'picture'], 'string', 'max' => 100],
+            [['company_name', 'build_name'], 'string', 'max' => 100],
             [['email'], 'string', 'max' => 50],
         ];
     }
