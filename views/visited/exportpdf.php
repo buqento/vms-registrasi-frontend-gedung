@@ -7,7 +7,7 @@ $qrCode = (new QrCode($_GET['visit_code']))
 ?>
 <div class="container">
 	<div class="row text-center text-sm">
-		<h3>Selamat datang di <strong><?php echo $_GET['destination']; ?></strong></h3>
+		<h3>Selamat datang di <strong><?php echo $_GET['destination_id']; ?></strong></h3>
 		<h1><strong><?php echo strtoupper($_GET['guest_name']); ?></strong></h1>
 		<hr>
 		<p>Kode kunjungan anda</p>

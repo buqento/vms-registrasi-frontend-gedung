@@ -1,56 +1,41 @@
 <?php
 
 namespace app\models;
+use common\models\User;
 
 use Yii;
 
-/**
- * This is the model class for table "user_app".
- *
- * @property string $id
- * @property string $guest_name
- * @property string $id_number
- * @property string $phone_number
- * @property string $email
- * @property string $photo
- * @property string $username
- * @property string $password
- * @property string $authKey
- */
 class UserApp extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public static function tableName()
     {
         return 'user_app';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function rules()
     {
         return [
-            [['guest_name', 'id_type', 'id_number', 'email', 'phone_number', 'address', 'username', 'password'], 'required'],
-            [['guest_name', 'email'], 'string', 'max' => 50],
-            [['id_number', 'username'], 'string', 'max' => 30],
-            [['phone_number'], 'string', 'max' => 12],
-            [['authKey'], 'string', 'max' => 64],
-            [['email'], 'email'],
+            ['guest_name', 'required', 'message' => 'Nama pengunjung tidak boleh kosong.' ],
+            ['type_id', 'required', 'message' => 'Tipe identitas tidak boleh kosong.' ],
+            ['id_number', 'required', 'message' => 'Nomor identitas tidak boleh kosong.' ],
+            ['email', 'required', 'message' => 'Email tidak boleh kosong.' ],
+            ['phone_number', 'required', 'message' => 'Nomor telepon tidak boleh kosong.' ],
+            ['address', 'required', 'message' => 'Alamat tidak boleh kosong.' ],
+            ['username', 'required', 'message' => 'Nama pengguna tidak boleh kosong.' ],
+            ['password', 'required', 'message' => 'Kata sandi tidak boleh kosong.' ],
+            ['phone_number', 'integer', 'message' => 'Nomor telepon tidak sesuai.'],
+            ['email', 'email', 'message' => 'Email tidak sesuai.'],
+            ['username', 'unique', 'message' => 'Nama pengguna telah terdaftar'],
+            ['email', 'unique', 'message' => 'Email telah terdaftar']
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function attributeLabels()
     {
         return [
             'id' => 'ID',
             'guest_name' => 'Nama Pengunjung',
-            'id_type' => 'Tipe Identitas',
+            'type_id' => 'Tipe Identitas',
             'id_number' => 'Nomor Identitas',
             'phone_number' => 'Nomor Telepon',
             'email' => 'Email',
@@ -60,6 +45,13 @@ class UserApp extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
             'password' => 'Kata Sandi',
             'authKey' => 'Auth Key',
         ];
+    }
+
+    public function signup($username, $password)
+    {        
+        $user = new UserApp();
+        $user->username = $username;
+        $user->password = $password;
     }
 
     public function getAuthKey()
@@ -105,5 +97,10 @@ class UserApp extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     public function generateAuthKey()
     {
         return Yii::$app->security->generateRandomString();
+    }
+    
+    public function getType()
+    {
+        return $this->hasOne(DclType::className(), ['id' => 'type_id']);
     }
 }

@@ -19,7 +19,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'guest_name') ?>
 
-    <?= $form->field($model, 'id_type') ?>
+    <?= $form->field($model, 'type_id') ?>
 
     <?= $form->field($model, 'gender') ?>
 

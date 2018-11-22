@@ -2,9 +2,6 @@
 
 use yii\helpers\Html;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\Visited */
-
 $this->title = 'Update Visited: ' . $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Visiteds', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];

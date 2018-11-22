@@ -16,16 +16,18 @@ use timurmelnikov\widgets\WebcamShoot;
 
     <?php if(Yii::$app->user->isGuest){ ?>
 
+    <div class="col-md-6">
+
     <?= $form->field($model, 'guest_name')->textInput(['maxlength' => true]) ?>
 
     <?php 
-        $id_type = DclType::find()
+        $type_id = DclType::find()
             ->select(['title'])
-            ->indexBy('title')
+            ->indexBy('id')
             ->column();
 
-        echo $form->field($model, 'id_type')->widget(Select2::classname(), [
-            'data' => $id_type,
+        echo $form->field($model, 'type_id')->widget(Select2::classname(), [
+            'data' => $type_id,
             'language' => 'en',
         ]);
     ?>
@@ -49,7 +51,7 @@ use timurmelnikov\widgets\WebcamShoot;
 
     <?= $form->field($model, 'visit_code')->hiddenInput()->label(false) ?>
 
-    <?= $form->field($model, 'destination')->hiddenInput()->label(false) ?>
+    <?= $form->field($model, 'destination_id')->hiddenInput()->label(false) ?>
 
     <?php } ?>
 
@@ -67,11 +69,25 @@ use timurmelnikov\widgets\WebcamShoot;
         echo $form->field($model, 'photo')->hiddenInput()->label(false);
     }
     ?>
-
-    <?php echo $form->field($model, 'dt_visit')->widget(DateTimePicker::classname(), [
-        'options' => ['placeholder' => 'Tentukan waktu kunjungan ...'],
-        'pluginOptions' => [ 'autoclose' => true ]
-        ]);
+</div>
+<div class="col-md-6">
+    <?php 
+        echo $form->field($model, 'dt_visit')->widget(DateTimePicker::classname(), [
+                'options' => 
+                [
+                    'placeholder' => 'Pilih Tanggal & Jam'
+                ],
+                'readonly' => true,
+                'removeButton' => false,
+                // 'pickerButton' => ['icon' => 'time'],
+                'pluginOptions' => 
+                [ 
+                    'autoclose' => true, 
+                    'todayHighlight' => true, 
+                    'startDate' => date('Y-m-d H:i:s'),
+                    'endDate' => '+7d',
+                ]
+            ]);
     ?>
 
     <?php 
@@ -86,12 +102,14 @@ use timurmelnikov\widgets\WebcamShoot;
         ]);
     ?>
 
+    <?= $form->field($model, 'host')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'additional_info')->textarea(['rows' => 3]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Kirim', ['class' => 'btn btn-success']) ?>
     </div>
-
+</div>
     <?php ActiveForm::end(); ?>
 
 </div>

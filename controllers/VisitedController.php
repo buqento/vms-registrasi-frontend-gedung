@@ -13,14 +13,9 @@ use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 use kartik\mpdf\Pdf;
 
-/**
- * VisitedController implements the CRUD actions for Visited model.
- */
 class VisitedController extends Controller
 {
-    /**
-     * {@inheritdoc}
-     */
+
 
     public function behaviors()
     {
@@ -52,16 +47,39 @@ class VisitedController extends Controller
         ]);
     }
 
+    public function actionGenerate($id)
+    {
+        return $this->render('generate', [
+            'model' => $this->findModel($id),
+        ]);
+    }
+
+    public function checkAvailable($dt_visit, $tenant_id)
+    {
+
+        $query = "
+            SELECT IF(TIMESTAMPDIFF(SECOND, (SELECT MAX(tanggal_kedatangan) FROM pemesanan), '".$dt_visit."') > 0, true, false) 
+            FROM pemesanan 
+            WHERE tenant_id = ".$tenant_id."
+        ";
+        // $query = "
+        // SELECT ifnull(TIMESTAMPDIFF(SECOND, (SELECT MAX(tanggal_kedatangan) FROM pemesanan), '".$dt_visit."'), false)
+        // FROM pemesanan
+        // WHERE tenant_id = ".$tenant_id."
+        // ";
+        return Yii::$app->db->createCommand($query)->queryScalar();
+    }
+
     public function actionCreate($id)
     {
         $model = new Visited();
         $model->visit_code = $this->createRandom(6);
-        $model->destination = $this->getTenant($id);
+        $model->destination_id = $id;
 
         $post = Yii::$app->request->post('Visited'); //Model ClassName
         if(Yii::$app->user->isGuest){
             $model->guest_name = $post['guest_name'];
-            $model->id_type = $post['id_type'];
+            $model->type_id = $post['type_id'];
             $model->id_number = $post['id_number'];
             $model->gender = $post['gender'];
             $model->phone_number = $post['phone_number'];
@@ -72,8 +90,8 @@ class VisitedController extends Controller
             $user_identity = UserApp::find()
                     ->where(['id' => Yii::$app->user->identity->id])
                     ->one();
-            $model->guest_name = $user_identity->username;
-            $model->id_type = $user_identity->id_type;
+            $model->guest_name = $user_identity->guest_name;
+            $model->type_id = $user_identity->type_id;
             $model->id_number = $user_identity->id_number;
             $model->gender = $user_identity->gender;
             $model->phone_number = $user_identity->phone_number;
@@ -86,12 +104,12 @@ class VisitedController extends Controller
 
             $model->dt_visit = $post['dt_visit'];
             $model->long_visit = $post['long_visit'];
+            $model->host = $post['host']; 
             $model->additional_info = $post['additional_info']; 
-
-            $model->save();    
+            $model->save();
             return $this->redirect(['view', 
                 'id' => $model->id
-            ]);         
+            ]); 
         }
 
         return $this->render('create', [
@@ -137,12 +155,6 @@ class VisitedController extends Controller
             $string .= $data{$pos};
         }
         return $string;
-    }
-
-    public function getTenant($id)
-    {
-        $destination = Dcldestination::findOne(['id' => $id]);
-        return $destination->company_name;
     }
 
     public function actionExport($visit_code) {

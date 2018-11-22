@@ -10,13 +10,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="row">
 
-        <div class="col">
+        <div class="col-md-6">
 
-        <h3 class="text-right">
-          <?= Html::encode($this->title) ?> 
-          <span class="glyphicon glyphicon glyphicon-menu-right"></span>
-          <small class="text-muted">Pengguna</small>
-        </h3>
+            <h1><?= Html::encode($this->title) ?></h1>
             <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
 
             <div class="form-group">

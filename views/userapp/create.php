@@ -11,11 +11,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="userapp-create">
 
-	<h3 class="text-right">
-	  <?= Html::encode($this->title) ?> 
-	  <span class="glyphicon glyphicon glyphicon-menu-right"></span>
-	  <small class="text-muted">Pengguna</small>
-	</h3>
+	<h1><?= Html::encode($this->title) ?></h1>
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>

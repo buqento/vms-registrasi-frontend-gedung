@@ -9,9 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
-/**
- * UserappController implements the CRUD actions for Userapp model.
- */
+
 class UserappController extends Controller
 {
 
@@ -45,13 +43,20 @@ class UserappController extends Controller
         ]);
     }
 
+
+
+
     public function actionCreate()
     {
-        $model = new Userapp();
-        $post = Yii::$app->request->post('UserApp'); //Model ClassName
+        $model = new UserApp();
+
+
+
+
+        $post = Yii::$app->request->post('UserApp');
         if (Yii::$app->request->isPost) {
             $model->guest_name = $post['guest_name'];
-            $model->id_type = $post['id_type'];
+            $model->type_id = $post['type_id'];
             $model->id_number = $post['id_number'];
             $model->gender = $post['gender'];
             $model->phone_number = $post['phone_number'];
@@ -61,8 +66,13 @@ class UserappController extends Controller
             $model->photo = $post['photo'];
             $model->password = $model->setPassword($post['password']);
             $model->authKey = $model->generateAuthKey();
-            if($model->save()){
-                return $this->redirect(['view', 'id' => $model->id]);
+            if($model->save() && $model->validate()){
+                if ($user = $model->signup($post['username'], $model->setPassword($post['password']))) {
+                    if (Yii::$app->getUser()->login($user)) {
+                        return $this->goHome();
+                    }
+                }
+                // return $this->redirect(['view', 'id' => $model->id]);
             }
         }
         return $this->render('create', [
@@ -75,9 +85,9 @@ class UserappController extends Controller
         $model = $this->findModel($id);
         $model->password = '';
         $post = Yii::$app->request->post('UserApp'); //Model ClassName
-        if (Yii::$app->request->isPost) {
+        if ($model->validate()) {
             $model->guest_name = $post['guest_name'];
-            $model->id_type = $post['id_type'];
+            $model->type_id = $post['type_id'];
             $model->id_number = $post['id_number'];
             $model->phone_number = $post['phone_number'];
             $model->address = $post['address'];
