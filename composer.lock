@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "42358c2e0351268cd7c4bf45d17344ec",
+    "content-hash": "f153ad75af945019dfa32f3b3f9a3674",
     "packages": [
         {
             "name": "2amigos/qrcode-library",
@@ -1635,6 +1635,57 @@
             "time": "2018-04-26T11:41:33+00:00"
         },
         {
+            "name": "linslin/yii2-curl",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/linslin/Yii2-Curl.git",
+                "reference": "54dd37224c56ba8fe6532e458a79586bdf8ce834"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/linslin/Yii2-Curl/zipball/54dd37224c56ba8fe6532e458a79586bdf8ce834",
+                "reference": "54dd37224c56ba8fe6532e458a79586bdf8ce834",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "yiisoft/yii2": "*"
+            },
+            "require-dev": {
+                "codeception/base": "^2.2.3",
+                "codeception/specify": "~0.4.3",
+                "codeception/verify": "~0.3.1",
+                "codeclimate/php-test-reporter": "dev-master",
+                "guzzlehttp/guzzle": ">=4.1.4 <7.0",
+                "mcustiel/phiremock-codeception-extension": "1.2.4"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "linslin\\yii2\\curl\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nils Gajsek",
+                    "email": "info@linslin.org"
+                }
+            ],
+            "description": "Easy and nice cURL extension with RESTful support for Yii2",
+            "keywords": [
+                " curl",
+                "extension",
+                "restful",
+                "yii2"
+            ],
+            "time": "2018-02-28T09:02:49+00:00"
+        },
+        {
             "name": "mpdf/mpdf",
             "version": "v7.1.5",
             "source": {
@@ -2203,6 +2254,53 @@
                 "yii2"
             ],
             "time": "2018-08-25T10:44:34+00:00"
+        },
+        {
+            "name": "yiisoft/yii2-httpclient",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yiisoft/yii2-httpclient.git",
+                "reference": "a77fbb7309badd6d815e72083355f668a3c8eda3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yiisoft/yii2-httpclient/zipball/a77fbb7309badd6d815e72083355f668a3c8eda3",
+                "reference": "a77fbb7309badd6d815e72083355f668a3c8eda3",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "~2.0.13"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "yii\\httpclient\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Paul Klimov",
+                    "email": "klimov.paul@gmail.com"
+                }
+            ],
+            "description": "HTTP client extension for the Yii framework",
+            "keywords": [
+                "curl",
+                "http",
+                "httpclient",
+                "yii2"
+            ],
+            "time": "2018-10-24T12:14:04+00:00"
         },
         {
             "name": "yiisoft/yii2-swiftmailer",
@@ -4918,7 +5016,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "timurmelnikov/yii2-webcam-shoot": 20
+        "timurmelnikov/yii2-webcam-shoot": 20,
+        "yiisoft/yii2-httpclient": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
