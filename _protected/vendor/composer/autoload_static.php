@@ -8,14 +8,14 @@ class ComposerStaticInitc6c655083f8a528118d40a2f4783ada5
 {
     public static $files = array (
         '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
-        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
+        'a9ed0d27b5a698798a89181429f162c5' => __DIR__ . '/..' . '/khanamiryan/qrcode-detector-decoder/lib/Common/customFunctions.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
+        '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '180092cfc969a12e06f2132a203a3184' => __DIR__ . '/..' . '/codeception/verify/src/Codeception/function.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
-        'a9ed0d27b5a698798a89181429f162c5' => __DIR__ . '/..' . '/khanamiryan/qrcode-detector-decoder/lib/Common/customFunctions.php',
-        '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -33,6 +33,10 @@ class ComposerStaticInitc6c655083f8a528118d40a2f4783ada5
         't' => 
         array (
             'timurmelnikov\\widgets\\' => 22,
+        ),
+        'q' => 
+        array (
+            'qrcode\\' => 7,
         ),
         'p' => 
         array (
@@ -86,6 +90,9 @@ class ComposerStaticInitc6c655083f8a528118d40a2f4783ada5
             'Symfony\\Polyfill\\Ctype\\' => 23,
             'Symfony\\Contracts\\' => 18,
             'Symfony\\Component\\Yaml\\' => 23,
+            'Symfony\\Component\\PropertyAccess\\' => 33,
+            'Symfony\\Component\\OptionsResolver\\' => 34,
+            'Symfony\\Component\\Inflector\\' => 28,
             'Symfony\\Component\\Finder\\' => 25,
             'Symfony\\Component\\EventDispatcher\\' => 34,
             'Symfony\\Component\\DomCrawler\\' => 29,
@@ -100,6 +107,7 @@ class ComposerStaticInitc6c655083f8a528118d40a2f4783ada5
         ),
         'M' => 
         array (
+            'MyCLabs\\Enum\\' => 13,
             'Mpdf\\' => 5,
         ),
         'G' => 
@@ -109,6 +117,11 @@ class ComposerStaticInitc6c655083f8a528118d40a2f4783ada5
         'F' => 
         array (
             'Faker\\' => 6,
+        ),
+        'E' => 
+        array (
+            'Endroid\\QrCode\\' => 15,
+            'Endroid\\Installer\\' => 18,
         ),
         'D' => 
         array (
@@ -161,6 +174,10 @@ class ComposerStaticInitc6c655083f8a528118d40a2f4783ada5
         array (
             0 => __DIR__ . '/..' . '/timurmelnikov/yii2-webcam-shoot',
         ),
+        'qrcode\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/yatin/yii2-qrcode',
+        ),
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
@@ -173,7 +190,7 @@ class ComposerStaticInitc6c655083f8a528118d40a2f4783ada5
         ),
         'kartik\\widgets\\' => 
         array (
-            0 => __DIR__ . '/..' . '/kartik-v/yii2-widgets',
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-widgets/src',
         ),
         'kartik\\typeahead\\' => 
         array (
@@ -193,7 +210,7 @@ class ComposerStaticInitc6c655083f8a528118d40a2f4783ada5
         ),
         'kartik\\spinner\\' => 
         array (
-            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-spinner',
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-spinner/src',
         ),
         'kartik\\sidenav\\' => 
         array (
@@ -221,11 +238,11 @@ class ComposerStaticInitc6c655083f8a528118d40a2f4783ada5
         ),
         'kartik\\mpdf\\' => 
         array (
-            0 => __DIR__ . '/..' . '/kartik-v/yii2-mpdf',
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-mpdf/src',
         ),
         'kartik\\growl\\' => 
         array (
-            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-growl',
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-growl/src',
         ),
         'kartik\\form\\' => 
         array (
@@ -257,7 +274,7 @@ class ComposerStaticInitc6c655083f8a528118d40a2f4783ada5
         ),
         'kartik\\alert\\' => 
         array (
-            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-alert',
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-alert/src',
         ),
         'kartik\\affix\\' => 
         array (
@@ -291,6 +308,18 @@ class ComposerStaticInitc6c655083f8a528118d40a2f4783ada5
         array (
             0 => __DIR__ . '/..' . '/symfony/yaml',
         ),
+        'Symfony\\Component\\PropertyAccess\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/property-access',
+        ),
+        'Symfony\\Component\\OptionsResolver\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/options-resolver',
+        ),
+        'Symfony\\Component\\Inflector\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/inflector',
+        ),
         'Symfony\\Component\\Finder\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/finder',
@@ -323,6 +352,10 @@ class ComposerStaticInitc6c655083f8a528118d40a2f4783ada5
         array (
             0 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
+        'MyCLabs\\Enum\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/myclabs/php-enum/src',
+        ),
         'Mpdf\\' => 
         array (
             0 => __DIR__ . '/..' . '/mpdf/mpdf/src',
@@ -334,6 +367,14 @@ class ComposerStaticInitc6c655083f8a528118d40a2f4783ada5
         'Faker\\' => 
         array (
             0 => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker',
+        ),
+        'Endroid\\QrCode\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/endroid/qr-code/src',
+        ),
+        'Endroid\\Installer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/endroid/installer/src',
         ),
         'Doctrine\\Instantiator\\' => 
         array (
@@ -506,6 +547,8 @@ class ComposerStaticInitc6c655083f8a528118d40a2f4783ada5
         'PHPUnit\\Framework\\MockObject\\Matcher\\Parameters' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/MockObject/Matcher/Parameters.php',
         'PHPUnit\\Framework\\MockObject\\Matcher\\StatelessInvocation' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/MockObject/Matcher/StatelessInvocation.php',
         'PHPUnit\\Framework\\MockObject\\MockBuilder' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/MockObject/MockBuilder.php',
+        'PHPUnit\\Framework\\MockObject\\MockMethod' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/MockObject/MockMethod.php',
+        'PHPUnit\\Framework\\MockObject\\MockMethodSet' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/MockObject/MockMethodSet.php',
         'PHPUnit\\Framework\\MockObject\\MockObject' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/MockObject/ForwardCompatibility/MockObject.php',
         'PHPUnit\\Framework\\MockObject\\RuntimeException' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/MockObject/Exception/RuntimeException.php',
         'PHPUnit\\Framework\\MockObject\\Stub' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/MockObject/Stub.php',
@@ -546,6 +589,7 @@ class ComposerStaticInitc6c655083f8a528118d40a2f4783ada5
         'PHPUnit\\Runner\\AfterSuccessfulTestHook' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Hook/AfterSuccessfulTestHook.php',
         'PHPUnit\\Runner\\AfterTestErrorHook' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Hook/AfterTestErrorHook.php',
         'PHPUnit\\Runner\\AfterTestFailureHook' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Hook/AfterTestFailureHook.php',
+        'PHPUnit\\Runner\\AfterTestHook' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Hook/AfterTestHook.php',
         'PHPUnit\\Runner\\AfterTestWarningHook' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Hook/AfterTestWarningHook.php',
         'PHPUnit\\Runner\\BaseTestRunner' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/BaseTestRunner.php',
         'PHPUnit\\Runner\\BeforeFirstTestHook' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Hook/BeforeFirstTestHook.php',
@@ -599,6 +643,7 @@ class ComposerStaticInitc6c655083f8a528118d40a2f4783ada5
         'PHPUnit\\Util\\TestDox\\XmlResultPrinter' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/TestDox/XmlResultPrinter.php',
         'PHPUnit\\Util\\TextTestListRenderer' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/TextTestListRenderer.php',
         'PHPUnit\\Util\\Type' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Type.php',
+        'PHPUnit\\Util\\XdebugFilterScriptGenerator' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/XdebugFilterScriptGenerator.php',
         'PHPUnit\\Util\\Xml' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Xml.php',
         'PHPUnit\\Util\\XmlTestListRenderer' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/XmlTestListRenderer.php',
         'PHPUnit_Framework_MockObject_MockObject' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/MockObject/MockObject.php',

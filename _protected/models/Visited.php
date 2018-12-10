@@ -15,14 +15,22 @@ class Visited extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'vms_type_id', 'id_number', 'gender', 'phone', 'email', 'photo', 'address', 'visit_code', 'employe_id', 'vms_tenant_id', 'visit_date', 'visit_long', 'additional_info'], 'required'],
-            [['dt_visit'], 'safe'],
-            ['email', 'email'],
-            [['additional_info'], 'string'],
-            [['name', 'email', 'visit_long'], 'string', 'max' => 50],
-            [['id_number'], 'string', 'max' => 30],
-            [['phone'], 'string', 'max' => 12],
-            [['address'], 'string', 'max' => 255],
+            
+            ['name', 'required', 'message' => 'Nama pengunjung tidak boleh kosong.' ],
+            ['id_number', 'required', 'message' => 'Nomor Identitas tidak boleh kosong.' ],
+            ['phone', 'required', 'message' => 'Nomor Telepon  tidak boleh kosong.' ],
+            ['email', 'required', 'message' => 'Email  tidak boleh kosong.' ],
+            ['address', 'required', 'message' => 'Alamat tidak boleh kosong.' ],
+            ['visit_date', 'required', 'message' => 'Tanggal & jam kunjungan tidak boleh kosong.' ],
+            ['employe_id', 'required', 'message' => 'Bertemu dengan tidak boleh kosong.' ],
+            ['additional_info', 'required', 'message' => 'Informasi kunjungan tidak boleh kosong.' ],
+            ['dt_visit', 'safe'],
+            ['email', 'email', 'message' => 'Email tidak sesuai.'],
+            ['additional_info', 'string'],
+            [['name', 'email'], 'string', 'max' => 50],
+            ['id_number', 'string', 'max' => 30],
+            ['phone', 'string', 'max' => 12],
+            ['address', 'string', 'max' => 255],
         ];
     }
 
@@ -33,6 +41,7 @@ class Visited extends \yii\db\ActiveRecord
             'name' => 'Nama Pengunjung',
             'vms_type_id' => 'Tipe Identitas',
             'id_number' => 'Nomor Identitas',
+            'vms_tenant_id' => 'Tenant',
             'gender' => 'Jenis Kelamin',
             'phone' => 'Nomor Telepon',
             'email' => 'Email',
@@ -57,7 +66,10 @@ class Visited extends \yii\db\ActiveRecord
         return $this->hasOne(VmsType::className(), ['id' => 'vms_type_id']);
     }
 
-
+    public function getEmploye()
+    {
+        return $this->hasOne(Employe::className(), ['id' => 'employe_id']);
+    }
 
 
 }

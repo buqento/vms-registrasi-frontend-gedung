@@ -1,0 +1,21 @@
+{
+    "name": "yatin/yii2-qrcode",
+    "description": "QR Code Generator",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Yatin",
+            "email": "developer.yatin.m@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "qrcode\\": ""
+        }
+    }
+}

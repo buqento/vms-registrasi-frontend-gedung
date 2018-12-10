@@ -29,6 +29,10 @@ class VisitedController extends Controller
         ];
     }
 
+    public function actionInfo(){
+        return $this->render('info');
+    }
+
     public function actionIndex()
     {
         $searchModel = new VisitedSearch();
@@ -87,7 +91,7 @@ class VisitedController extends Controller
             $model->address = $post['address'];    
             $model->photo = $post['photo'];    
         }else{
-            $user_identity = UserApp::find()
+            $user_identity = Userapp::find()
                     ->where(['id' => Yii::$app->user->identity->id])
                     ->one();
             $model->name = $user_identity->name;
@@ -106,10 +110,13 @@ class VisitedController extends Controller
             $model->visit_long = $post['visit_long'];
             $model->employe_id = $post['employe_id']; 
             $model->additional_info = $post['additional_info']; 
-            $model->save();
-            return $this->redirect(['view', 
-                'id' => $model->id
-            ]); 
+            if($model->validate()){
+                $model->save();
+                return $this->redirect(['view', 
+                    'id' => $model->id
+                ]);        
+            }
+
         }
 
         return $this->render('create', [
@@ -177,7 +184,7 @@ class VisitedController extends Controller
             'filename' => 'vms_'.$visit_code.'-' . time() . '.pdf',
             // format content from your own css file if needed or use the
             // enhanced bootstrap css built by Krajee for mPDF formatting 
-            'cssFile' => '@vendor/kartik-v/yii2-mpdf/assets/kv-mpdf-bootstrap.min.css',
+            'cssFile' => '@vendor/kartik-v/yii2-mpdf/src/assets/kv-mpdf-bootstrap.min.css',
             // any css to be embedded if required
             'cssInline' => '.kv-heading-1{font-size:18px}', 
              // set mPDF properties on the fly

@@ -52,7 +52,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 ],
                 'visit_date:datetime',
                 'visit_long',
-                'employe_id',
+                [
+                    'attribute' => 'employe_id',
+                    'value' => function($data){
+                        return $data->employe->name;
+                    }
+                ],
                 'additional_info:ntext',
                 // 'created',
             ],

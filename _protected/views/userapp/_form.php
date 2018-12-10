@@ -70,9 +70,9 @@ $fpassword = [
 <div class="col-md-4">
     <h4>Data Login</h4>
     <hr>
-    <?= $form->field($model, 'username', $fusername)->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'username', $fusername)->textInput(['maxlength' => 15, 'placeholder' => 'Maksimal 15 karakter']) ?>
 
-    <?= $form->field($model, 'password', $fpassword)->passwordInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'password', $fpassword)->passwordInput(['maxlength' => 15, 'placeholder' => 'Maksimal 15 karakter']) ?>
 
     <?= $form->field($model, 'authKey')->hiddenInput()->label(false) ?>
 

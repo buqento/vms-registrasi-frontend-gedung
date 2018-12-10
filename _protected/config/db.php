@@ -2,9 +2,9 @@
 
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=vms-registrasi',
+    'dsn' => 'mysql:host=localhost;dbname=vms_registrasi',
     'username' => 'root',
-    'password' => '',
+    'password' => 'Manggureb3!',
     'charset' => 'utf8',
 
     // Schema cache options (for production environment)

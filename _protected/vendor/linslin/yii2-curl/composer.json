@@ -1,6 +1,6 @@
 {
     "name": "linslin/yii2-curl",
-    "description": "Easy and nice cURL extension with RESTful support for Yii2",
+    "description": "Cool working cURL extension with RESTful support for Yii",
     "type": "yii2-extension",
     "keywords": ["yii2","extension"," curl", "RESTful"],
     "license": "MIT",
@@ -11,16 +11,7 @@
         }
     ],
     "require": {
-        "yiisoft/yii2": "*",
-        "ext-curl": "*"
-    },
-    "require-dev": {
-        "codeception/base": "^2.2.3",
-        "codeception/verify": "~0.3.1",
-        "codeception/specify": "~0.4.3",
-        "guzzlehttp/guzzle": ">=4.1.4 <7.0",
-        "mcustiel/phiremock-codeception-extension": "1.2.4",
-        "codeclimate/php-test-reporter": "dev-master"
+        "yiisoft/yii2": "*"
     },
     "autoload": {
         "psr-4": {
