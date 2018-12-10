@@ -66,15 +66,6 @@ return array (
       '@timurmelnikov/widgets' => $vendorDir . '/timurmelnikov/yii2-webcam-shoot',
     ),
   ),
-  'yiisoft/yii2-httpclient' => 
-  array (
-    'name' => 'yiisoft/yii2-httpclient',
-    'version' => '9999999-dev',
-    'alias' => 
-    array (
-      '@yii/httpclient' => $vendorDir . '/yiisoft/yii2-httpclient/src',
-    ),
-  ),
   'kartik-v/yii2-krajee-base' => 
   array (
     'name' => 'kartik-v/yii2-krajee-base',
@@ -91,15 +82,6 @@ return array (
     'alias' => 
     array (
       '@kartik/datetime' => $vendorDir . '/kartik-v/yii2-widget-datetimepicker/src',
-    ),
-  ),
-  'linslin/yii2-curl' => 
-  array (
-    'name' => 'linslin/yii2-curl',
-    'version' => '1.0.3.0',
-    'alias' => 
-    array (
-      '@linslin/yii2/curl' => $vendorDir . '/linslin/yii2-curl',
     ),
   ),
   'kartik-v/yii2-widget-datepicker' => 
@@ -253,15 +235,6 @@ return array (
     'alias' => 
     array (
       '@Da/QrCode' => $vendorDir . '/2amigos/qrcode-library/src',
-    ),
-  ),
-  'yatin/yii2-qrcode' => 
-  array (
-    'name' => 'yatin/yii2-qrcode',
-    'version' => '9999999-dev',
-    'alias' => 
-    array (
-      '@qrcode' => $vendorDir . '/yatin/yii2-qrcode',
     ),
   ),
   'yiisoft/yii2-debug' => 

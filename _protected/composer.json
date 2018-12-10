@@ -22,11 +22,7 @@
         "kartik-v/yii2-mpdf": "*",
         "kartik-v/yii2-widget-datetimepicker": "*",
         "timurmelnikov/yii2-webcam-shoot": "dev-master",
-        "yiisoft/yii2-httpclient": "^2.0@dev",
-        "linslin/yii2-curl": "*",
-        "2amigos/qrcode-library": "~1.1",
-        "yatin/yii2-qrcode": "*",
-        "endroid/qr-code": "^3.0@dev"
+        "2amigos/qrcode-library": "~1.1"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
